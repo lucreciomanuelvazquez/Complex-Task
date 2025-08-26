@@ -12,7 +12,8 @@ public class TestBase {
 
     @Before
     public void setUp() {
-        String browser = System.getProperty("browser", "chrome"); // default chrome
+        //String browser = System.getProperty("browser", "chrome");
+        String browser = System.getProperty("browser", "edge");
         driver = DriverSingleton.getDriver(browser);
         logger = new LoggerDecorator(driver);
         logger.navigateTo("https://www.saucedemo.com/");
@@ -31,4 +32,5 @@ public class TestBase {
 }
 
 //mvn clean test
-//mvn clean test -Dbrowser=edge
+//mvn clean test -Dbrowser=edge esta es por defecto
+//mvn clean test -Dbrowser=chrome
