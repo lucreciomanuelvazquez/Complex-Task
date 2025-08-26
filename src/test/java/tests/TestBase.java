@@ -9,14 +9,23 @@ import utils.LoggerDecorator;
 public class TestBase {
     protected WebDriver driver;
     protected LoggerDecorator logger;
+    //test base class is an abstract foundation for all test classes
 
     @Before
     public void setUp() {
         //String browser = System.getProperty("browser", "chrome");
         String browser = System.getProperty("browser", "edge");
+            //reads the browser type from a system property, defaulting to "edge" if not specified
         driver = DriverSingleton.getDriver(browser);
         logger = new LoggerDecorator(driver);
         logger.navigateTo("https://www.saucedemo.com/");
+        //runs before each test method
+        //initializes WebDriver ensures ONLY ONE WEB DRIVER INSTANCE IS CREATED (SINGLETON PATTERN)
+        //initializes LoggerDecorator to add logging capabilities to WebDriver actions
+        //wraps the WebDriver with LoggerDecorator for logging navigation and actions
+        //navigates to the base URL of the application under test
+
+
     }
 
     @After
@@ -27,6 +36,10 @@ public class TestBase {
             e.printStackTrace();
         }
         DriverSingleton.quitDriver();
+        //runs after each test case
+        //waits for 5 seconds to observe the test result before closing
+        //quits the WebDriver instance, closing the browser and cleaning up resources
+
     }
 
 }
