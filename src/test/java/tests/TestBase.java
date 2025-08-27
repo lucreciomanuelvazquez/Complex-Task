@@ -15,7 +15,7 @@ public class TestBase {
     public void setUp() {
         //String browser = System.getProperty("browser", "chrome");
         String browser = System.getProperty("browser", "edge");
-            //reads the browser type from a system property, defaulting to "edge" if not specified
+        //reads the browser type from a system property, defaulting to "edge" if not specified
         driver = DriverSingleton.getDriver(browser);
         logger = new LoggerDecorator(driver);
         logger.navigateTo("https://www.saucedemo.com/");
@@ -23,9 +23,6 @@ public class TestBase {
         //initializes WebDriver ensures ONLY ONE WEB DRIVER INSTANCE IS CREATED (SINGLETON PATTERN)
         //initializes LoggerDecorator to add logging capabilities to WebDriver actions
         //wraps the WebDriver with LoggerDecorator for logging navigation and actions
-        //navigates to the base URL of the application under test
-
-
     }
 
     @After
@@ -36,14 +33,9 @@ public class TestBase {
             e.printStackTrace();
         }
         DriverSingleton.quitDriver();
-        //runs after each test case
-        //waits for 5 seconds to observe the test result before closing
         //quits the WebDriver instance, closing the browser and cleaning up resources
-
     }
-
 }
 
 //mvn clean test
-//mvn clean test -Dbrowser=edge esta es por defecto
 //mvn clean test -Dbrowser=chrome

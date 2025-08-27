@@ -5,8 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-//this keeps a separate WebDriver instance for each thread
-//so tests running in parallel do not interfere with each other
+//tests running in parallel do not interfere with each other
+
 public class DriverSingleton {
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     //this keeps a separate WebDriver instance for each thread
